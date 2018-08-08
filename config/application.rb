@@ -35,6 +35,8 @@ module AreaMotors
       g.assets false
       g.helper false
       g.view_specs false
+      g.request_specs false
+      g.routing_specs false
       # g.decorator false # Might use decorators if the views start feeling cluttered
     end
 
