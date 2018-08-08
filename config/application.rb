@@ -35,6 +35,7 @@ module AreaMotors
       g.assets false
       g.helper false
       g.view_specs false
+      # g.decorator false # Might use decorators if the views start feeling cluttered
     end
 
     # Allow i18ns to be broken up into multiple files.
