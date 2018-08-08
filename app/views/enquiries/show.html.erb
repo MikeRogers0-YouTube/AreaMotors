@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @enquiry.name %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @enquiry.email %>
+</p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @enquiry.message %>
+</p>
+
+<p>
+  <strong>Source:</strong>
+  <%= @enquiry.source %>
+</p>
+
+<p>
+  <strong>Listing make:</strong>
+  <%= @enquiry.listing_make %>
+</p>
+
+<p>
+  <strong>Listing model:</strong>
+  <%= @enquiry.listing_model %>
+</p>
+
+<p>
+  <strong>Listing year:</strong>
+  <%= @enquiry.listing_year %>
+</p>
+
+<p>
+  <strong>Listing colour:</strong>
+  <%= @enquiry.listing_colour %>
+</p>
+
+<p>
+  <strong>Listing url:</strong>
+  <%= @enquiry.listing_url %>
+</p>
+
+<p>
+  <strong>Listing reference:</strong>
+  <%= @enquiry.listing_reference %>
+</p>
+
+<%= link_to 'Edit', edit_enquiry_path(@enquiry) %> |
+<%= link_to 'Back', enquiries_path %>

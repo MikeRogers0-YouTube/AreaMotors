@@ -1,0 +1,43 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Enquiries</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Message</th>
+      <th>Source</th>
+      <th>Listing make</th>
+      <th>Listing model</th>
+      <th>Listing year</th>
+      <th>Listing colour</th>
+      <th>Listing url</th>
+      <th>Listing reference</th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @enquiries.each do |enquiry| %>
+      <tr>
+        <td><%= enquiry.name %></td>
+        <td><%= enquiry.email %></td>
+        <td><%= enquiry.message %></td>
+        <td><%= enquiry.source %></td>
+        <td><%= enquiry.listing_make %></td>
+        <td><%= enquiry.listing_model %></td>
+        <td><%= enquiry.listing_year %></td>
+        <td><%= enquiry.listing_colour %></td>
+        <td><%= enquiry.listing_url %></td>
+        <td><%= enquiry.listing_reference %></td>
+        <td><%= link_to 'Show', enquiry %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Enquiry', new_enquiry_path %>
