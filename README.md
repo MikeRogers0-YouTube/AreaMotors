@@ -28,6 +28,6 @@ Please ensure the following:
 
 ### System Requirements
 
-- Ruby 2.4.0
+- Ruby 2.4.1
 - Bundler 1.16.1
 - PostgreSQL 10.1
