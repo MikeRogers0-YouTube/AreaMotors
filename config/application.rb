@@ -36,5 +36,8 @@ module AreaMotors
       g.helper false
       g.view_specs false
     end
+
+    # Allow i18ns to be broken up into multiple files.
+    config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
   end
 end
