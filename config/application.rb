@@ -29,5 +29,12 @@ module AreaMotors
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.generators do |g|
+      g.helper false
+      g.assets false
+      g.helper false
+      g.view_specs false
+    end
   end
 end
