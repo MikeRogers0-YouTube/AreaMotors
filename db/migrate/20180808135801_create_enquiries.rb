@@ -4,7 +4,8 @@ class CreateEnquiries < ActiveRecord::Migration[5.2]
       t.string :name
       t.string :email
       t.text :message
-      t.integer :source
+      t.integer :source, default: 10
+      t.string :source_url
       t.string :listing_make
       t.string :listing_model
       t.string :listing_year
