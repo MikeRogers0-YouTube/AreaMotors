@@ -14,7 +14,8 @@ RSpec.describe EnquiryParser::CarsForSale do
         'listing_model': 'Clio',
         'listing_year': '2006',
         'listing_colour': 'White',
-        'listing_url': '/carsforsale-1-listing.html'
+        'listing_url': '/carsforsale-1-listing.html',
+        'listing_reference': nil
       })
     end
   end
