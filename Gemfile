@@ -33,7 +33,7 @@ gem 'turbolinks', '~> 5'
 gem 'bootsnap', '>= 1.1.0', require: false
 
 # Draper for decorating models
-# gem 'draper'
+gem 'draper'
 
 # Simple Form - The standard Rails forms don't encourage i18n as much.
 gem 'simple_form'

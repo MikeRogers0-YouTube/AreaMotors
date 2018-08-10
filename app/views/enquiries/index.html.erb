@@ -7,6 +7,8 @@
   </div>
 </header>
 
+<%= render 'search' %>
+
 <table class="table">
   <thead>
     <tr>
@@ -25,7 +27,7 @@
   </thead>
 
   <tbody>
-    <% @enquiries.each do |enquiry| %>
+    <% collection.each do |enquiry| %>
       <tr>
         <td><%= enquiry.name %></td>
         <td><%= enquiry.email %></td>

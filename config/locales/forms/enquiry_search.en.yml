@@ -1,0 +1,11 @@
+en:
+  simple_form:
+    placeholders:
+      enquiry_search:
+        query: 'Search for a customers by name or email'
+
+  helpers:
+    submit:
+      enquiry_search:
+        submit: 'Search'
+

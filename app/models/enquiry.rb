@@ -19,6 +19,14 @@ class Enquiry < ApplicationRecord
 
   attr_accessor :source_html
 
+  scope :search, ->(query){
+    where(
+      %i(name email)
+      .collect { |field| arel_table[field].matches("%#{query}%") }
+      .inject(:or)
+    )
+  }
+
   def self.create_from_source(source: nil, source_url: nil, source_html: nil)
     enquiry = new(source: source, source_url: source_url, source_html: source_html).tap do |enquiry|
       enquiry.attributes = enquiry.parser.attributes

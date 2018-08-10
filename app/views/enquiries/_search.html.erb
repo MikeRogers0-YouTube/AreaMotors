@@ -1,0 +1,12 @@
+<section class="mb-5">
+  <%= simple_form_for(:enquiry_search, url: url_for(:enquiries), method: :get, wrapper: :inline_form) do |f| %>
+    <div class="row">
+      <div class="col">
+        <%= f.input :query, required: true, input_html: { name: :query, value: params[:query], autofocus: params[:query].present? } %>
+      </div>
+      <div class="col-auto">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
+    </div>
+  <% end %>
+</section>
