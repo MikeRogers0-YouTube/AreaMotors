@@ -1,14 +1,14 @@
 class EnquiryParser::CarsForSale < EnquiryParser::Base
   def name
-    doc.to_html.strip.match(/(.*) \((.*)\) has contacted you about a car for sale/)[1].strip
+    doc.to_html.match(/(.*) \((.*)\) has contacted you about a car for sale/)[1].strip
   end
 
   def email
-    doc.to_html.strip.match(/(.*) \((.*)\) has contacted you about a car for sale/)[2].strip
+    doc.to_html.match(/(.*) \((.*)\) has contacted you about a car for sale/)[2].strip
   end
 
   def message
-    doc.to_html.strip.match(/He asked: \<br\>(.*)\<br\>\<br\>/sm)[1].strip
+    doc.to_html.match(/He asked: \<br\>(.*)\<br\>\<br\>/sm)[1].strip
   end
 
   def listing_make
