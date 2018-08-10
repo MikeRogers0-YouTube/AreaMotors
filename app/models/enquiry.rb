@@ -8,7 +8,7 @@ class Enquiry < ApplicationRecord
     open: 10, 
     done: 20, 
     invalid: 30, 
-  }
+  }, _prefix: :state
 
   validates :name, presence: true
   validates :email, presence: true

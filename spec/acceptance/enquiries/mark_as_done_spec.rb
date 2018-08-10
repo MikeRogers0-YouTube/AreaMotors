@@ -4,7 +4,7 @@ feature 'Enquiries - mark as done', acceptance: true do
   let!(:enquiry){ Enquiry.create!() }
 
   scenario 'User can mark a enquiry as done' do
-    expect(enquiry.done?).to eq(false)
+    expect(enquiry.state_done?).to eq(false)
 
     visit enquiry_path(enquiry)
 
@@ -17,6 +17,6 @@ feature 'Enquiries - mark as done', acceptance: true do
     end
 
     enquiry.reload
-    expect(enquiry.done?).to eq(true)
+    expect(enquiry.state_done?).to eq(true)
   end
 end

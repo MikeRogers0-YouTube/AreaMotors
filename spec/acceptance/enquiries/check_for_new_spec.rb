@@ -4,7 +4,7 @@ feature 'Enquiries - check for new', acceptance: true do
   scenario 'User can check for new enquries and the database populates' do
     expect(Enquiry.count).to eq(0)
 
-    visit enquries_path
+    visit enquiries_path
 
     within '.actions' do
       click_on 'Check for new'
