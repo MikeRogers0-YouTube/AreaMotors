@@ -15,4 +15,23 @@ RSpec.describe Enquiry, type: :model do
       expect(Enquiry.search('mailinator.com')).to eq([enquiry_1, enquiry_2])
     end
   end
+
+  describe '.verify_email_quality!' do
+    pending
+    let(:enquiry){ Enquiry.new(email: 'sjhardigan@mailinator.com') }
+
+    context 'a valid email' do
+      it 'Keeps the enquiry.state as "open"' do
+        expect{ enquiry.verify_email_quality! }.to_not change{ enquiry.state }
+      end
+    end
+
+    context 'an invalid email' do
+      let(:enquiry){ Enquiry.new(email: 'invalid-email') }
+
+      it 'Changes the enquiry.state to "invalid"' do
+        expect{ enquiry.verify_email_quality! }.to change{ enquiry.state }.from('open').to('invalid')
+      end
+    end
+  end
 end

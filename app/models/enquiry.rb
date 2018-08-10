@@ -38,4 +38,8 @@ class Enquiry < ApplicationRecord
   def parser
     @parser ||= ("EnquiryParser::#{source.to_s.camelize}").constantize.new(source_html)
   end
+
+  def verify_email_quality!
+    # TODO
+  end
 end
