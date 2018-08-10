@@ -15,4 +15,16 @@ class Enquiry < ApplicationRecord
   validates :message, presence: true
   validates :source, presence: true
   validates :state, presence: true
+
+  def self.new_from_source(source: nil, source_url: nil)
+    enquiry_parser = ("EnquiryParser::#{source.to_s.camelize}").constantize.new({
+      source: source, source_url: source_url
+    })
+
+    return false unless enquiry_parser.valid?
+
+    new.tap do |enquiry|
+      enquiry.attributes = enquiry_parser.attributes
+    end
+  end
 end

@@ -1,0 +1,4 @@
+en:
+  enquiries:
+    fetch_new:
+      notice: "Found %{fetched_enquiries_count} new enquiries"

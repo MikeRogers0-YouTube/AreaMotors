@@ -7,7 +7,7 @@ feature 'Enquiries - check for new', acceptance: true do
     visit enquiries_path
 
     within '.actions' do
-      click_on 'Check for new'
+      click_on 'Check for new enquiries'
     end
 
     within '.alerts' do

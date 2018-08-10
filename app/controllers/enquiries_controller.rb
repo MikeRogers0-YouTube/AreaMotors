@@ -10,6 +10,19 @@ class EnquiriesController < ApplicationController
   def show
   end
 
+  # POST /enquiries/fetch_new
+  def fetch_new
+    fetched_enquiries_count = [
+      Enquiry.new_from_source(source: :a_m_direct, source_url: 'amdirect-1.html'),
+      Enquiry.new_from_source(source: :a_m_direct, source_url: 'amdirect-2.html'),
+      Enquiry.new_from_source(source: :cars_for_sale, source_url: 'carsforsale-1.html')
+    ].collect(&:save).reject(&:!).count
+
+    redirect_to({ action: :index }, {
+      notice: t('.notice', { fetched_enquiries_count: fetched_enquiries_count })
+    })
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_enquiry
