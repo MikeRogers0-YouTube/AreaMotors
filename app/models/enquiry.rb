@@ -14,19 +14,20 @@ class Enquiry < ApplicationRecord
   validates :email, presence: true
   validates :message, presence: true
   validates :source, presence: true
+  validates :source_url, presence: true, uniqueness: true
   validates :state, presence: true
 
-  def self.create_from_source(source: nil, source_url: nil)
-    create(source: source, source_url: source_url).tap do |enquiry|
+  attr_accessor :source_html
+
+  def self.create_from_source(source: nil, source_url: nil, source_html: nil)
+    enquiry = new(source: source, source_url: source_url, source_html: source_html).tap do |enquiry|
       enquiry.attributes = enquiry.parser.attributes
     end
+    enquiry.save
+    enquiry
   end
 
   def parser
     @parser ||= ("EnquiryParser::#{source.to_s.camelize}").constantize.new(source_html)
-  end
-
-  def source_html
-    '<!-- Will read a file -->'
   end
 end
