@@ -14,6 +14,7 @@ class Enquiry < ApplicationRecord
   validates :email, presence: true
   validates :message, presence: true
   validates :source, presence: true
+  # TODO: Source URL is silly. Just validate the listing URL is unique.
   validates :source_url, presence: true, uniqueness: true
   validates :state, presence: true
 
