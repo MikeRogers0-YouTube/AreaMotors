@@ -3,6 +3,10 @@ Rails.application.routes.draw do
     collection do
       post :fetch_new
     end
+
+    member do
+      patch :state_done
+    end
   end
 
   root to: redirect('/enquiries')

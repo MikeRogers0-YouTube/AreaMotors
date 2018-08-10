@@ -1,5 +1,5 @@
 class EnquiriesController < ApplicationController
-  before_action :set_enquiry, only: [:show]
+  before_action :set_enquiry, only: [:show, :state_done]
 
   # GET /enquiries
   def index
@@ -8,6 +8,13 @@ class EnquiriesController < ApplicationController
 
   # GET /enquiries/1
   def show
+  end
+
+  # PATCH /enquiries/1/state_done
+  def state_done
+    @enquiry.state_done!
+
+    redirect_to url_for(@enquiry), notice: t('.notice')
   end
 
   # POST /enquiries/fetch_new

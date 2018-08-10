@@ -1,4 +1,8 @@
-<p id="notice"><%= notice %></p>
+<header class="row mb-5">
+  <div class="col-12">
+    <h1>Enquiry<small> <%= @enquiry.email %></small></h1>
+  </div>
+</header>
 
 <p>
   <strong>Name:</strong>
@@ -50,5 +54,8 @@
   <%= @enquiry.listing_reference %>
 </p>
 
-<%= link_to 'Edit', edit_enquiry_path(@enquiry) %> |
-<%= link_to 'Back', enquiries_path %>
+
+<div class="actions">
+  <%= link_to 'Back', enquiries_path %>
+  <%= link_to 'Mark as done', state_done_enquiry_path(@enquiry), method: :patch, class: 'btn btn-success' unless @enquiry.state_done? %>
+</div>
