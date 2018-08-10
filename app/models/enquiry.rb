@@ -17,9 +17,7 @@ class Enquiry < ApplicationRecord
   validates :state, presence: true
 
   def self.new_from_source(source: nil, source_url: nil)
-    enquiry_parser = ("EnquiryParser::#{source.to_s.camelize}").constantize.new({
-      content: '<!-- Will read a file -->'
-    })
+    enquiry_parser = ("EnquiryParser::#{source.to_s.camelize}").constantize.new('<!-- Will read a file -->')
 
     return false unless enquiry_parser.valid?
 
