@@ -10,7 +10,7 @@ RSpec.describe EnquiryParser::AMDirect do
       expect(enquiry.attributes).to eq({
         'name': 'John Smith',
         'email': 'johnsmith@mailinator.com',
-        'message': "<br>I'm interested in buying this car.<br>Would you take part exchange?<br>Thanks,<br><br>John",
+        'message': "I'm interested in buying this car.<br>Would you take part exchange?<br>Thanks,<br><br>John",
         'listing_make': 'Ford',
         'listing_model': 'Focus',
         'listing_year': '2008',
@@ -30,7 +30,12 @@ RSpec.describe EnquiryParser::AMDirect do
   end
 
   describe '.message' do
-    it { expect(enquiry.message).to eq("<br>I'm interested in buying this car.<br>Would you take part exchange?<br>Thanks,<br><br>John") }
+    it { expect(enquiry.message).to eq("I'm interested in buying this car.<br>Would you take part exchange?<br>Thanks,<br><br>John") }
+
+    context 'single line message' do
+      let(:source_html){ File.open('spec/fixtures/amdirect-2.html').read }
+      it { expect(enquiry.message).to eq("Is this vehicle still available?") }
+    end
   end
 
   describe '.listing_make' do

@@ -1,8 +1,7 @@
 class EnquiryParser::Base
 
-  attr_accessor :content
   def initialize(content)
-    self.content = content
+    @content = content
   end
 
   def valid?
@@ -21,5 +20,10 @@ class EnquiryParser::Base
       'listing_url': listing_url,
       'listing_reference': listing_reference
     }
+  end
+
+  private
+  def doc
+    @doc ||= Nokogiri::HTML(@content)
   end
 end

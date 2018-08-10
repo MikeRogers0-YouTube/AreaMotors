@@ -19,7 +19,7 @@ class Enquiry < ApplicationRecord
   def self.new_from_source(source: nil, source_url: nil)
     enquiry_parser = ("EnquiryParser::#{source.to_s.camelize}").constantize.new('<!-- Will read a file -->')
 
-    return false unless enquiry_parser.valid?
+    return new unless enquiry_parser.valid?
 
     new.tap do |enquiry|
       enquiry.source = source
