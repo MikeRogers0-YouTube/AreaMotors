@@ -1,7 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe EnquiryParser::AMDirect do
-
   let(:source_html){ File.open('spec/fixtures/amdirect-1.html').read }
   let(:enquiry) { EnquiryParser::AMDirect.new(source_html) }
 
