@@ -29,9 +29,8 @@ class Enquiry < ApplicationRecord
   }
 
   def self.create_from_source(source: nil, source_url: nil, source_html: nil)
-    enquiry = new(source: source, source_url: source_url, source_html: source_html).tap do |enquiry|
-      enquiry.attributes = enquiry.parser.attributes
-    end
+    enquiry = new(source: source, source_url: source_url, source_html: source_html)
+    enquiry.attributes = enquiry.parser.attributes
     enquiry.save
     enquiry
   end
