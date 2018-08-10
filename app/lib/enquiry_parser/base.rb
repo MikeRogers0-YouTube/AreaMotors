@@ -23,7 +23,11 @@ class EnquiryParser::Base
   end
 
   private
+  def content
+    @content
+  end
+
   def doc
-    @doc ||= Nokogiri::HTML(@content)
+    @doc ||= Nokogiri::HTML(content)
   end
 end

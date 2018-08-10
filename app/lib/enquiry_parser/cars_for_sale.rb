@@ -1,11 +1,14 @@
 class EnquiryParser::CarsForSale < EnquiryParser::Base
   def name
+    doc.to_html.strip.match(/(.*) \((.*)\) has contacted you about a car for sale/)[1].strip
   end
 
   def email
+    doc.to_html.strip.match(/(.*) \((.*)\) has contacted you about a car for sale/)[2].strip
   end
 
   def message
+    doc.to_html.strip.match(/He asked: \<br\>(.*)\<br\>\<br\>/sm)[1].strip
   end
 
   def listing_make
@@ -28,8 +31,7 @@ class EnquiryParser::CarsForSale < EnquiryParser::Base
     doc.css('div > a').last.attributes['href'].value
   end
 
-  def listing_reference
-  end
+  def listing_reference; end
 
   private
   def listing_table_value(column)
