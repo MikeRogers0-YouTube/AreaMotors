@@ -16,15 +16,17 @@ class Enquiry < ApplicationRecord
   validates :source, presence: true
   validates :state, presence: true
 
-  def self.new_from_source(source: nil, source_url: nil)
-    enquiry_parser = ("EnquiryParser::#{source.to_s.camelize}").constantize.new('<!-- Will read a file -->')
-
-    return new unless enquiry_parser.valid?
-
-    new.tap do |enquiry|
-      enquiry.source = source
-      enquiry.source_url = source_url
-      enquiry.attributes = enquiry_parser.attributes
+  def self.create_from_source(source: nil, source_url: nil)
+    create(source: source, source_url: source_url).tap do |enquiry|
+      enquiry.attributes = enquiry.parser.attributes
     end
+  end
+
+  def parser
+    @parser ||= ("EnquiryParser::#{source.to_s.camelize}").constantize.new(source_html)
+  end
+
+  def source_html
+    '<!-- Will read a file -->'
   end
 end

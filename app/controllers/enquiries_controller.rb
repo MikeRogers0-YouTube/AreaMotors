@@ -13,10 +13,10 @@ class EnquiriesController < ApplicationController
   # POST /enquiries/fetch_new
   def fetch_new
     fetched_enquiries_count = [
-      Enquiry.new_from_source(source: :a_m_direct, source_url: 'amdirect-1.html'),
-      Enquiry.new_from_source(source: :a_m_direct, source_url: 'amdirect-2.html'),
-      Enquiry.new_from_source(source: :cars_for_sale, source_url: 'carsforsale-1.html')
-    ].collect(&:save).reject(&:!).count
+      Enquiry.create_from_source(source: :a_m_direct, source_url: 'amdirect-1.html'),
+      Enquiry.create_from_source(source: :a_m_direct, source_url: 'amdirect-2.html'),
+      Enquiry.create_from_source(source: :cars_for_sale, source_url: 'carsforsale-1.html')
+    ].reject(&:!).count
 
     redirect_to({ action: :index }, {
       notice: t('.notice', { fetched_enquiries_count: fetched_enquiries_count })
