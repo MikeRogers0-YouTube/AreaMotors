@@ -35,9 +35,9 @@ class EnquiriesController < ApplicationController
   helper_method :collection
   def collection
     if params[:query].present?
-      Enquiry.search(params[:query]).decorate
+      Enquiry.search(params[:query]).newest_first.decorate
     else
-      Enquiry.all.decorate
+      Enquiry.all.newest_first.decorate
     end
   end
 end

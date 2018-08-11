@@ -21,7 +21,7 @@ class Enquiry < ApplicationRecord
 
   attr_accessor :source_html
 
-  # TODO: A scope for ordering by newest_first?
+  scope :newest_first, ->{ order(created_at: :desc) }
   scope :search, ->(query){
     where(
       %i(name email)
