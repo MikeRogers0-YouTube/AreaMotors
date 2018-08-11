@@ -4,7 +4,6 @@ feature 'Enquiries - Search', acceptance: true do
   let!(:enquiry_1) do
     Enquiry.create_from_source(
       source: :a_m_direct,
-      source_url: 'amdirect-1.html',
       source_html: File.open('spec/fixtures/amdirect-1.html').read
     )
   end
@@ -12,7 +11,6 @@ feature 'Enquiries - Search', acceptance: true do
   let!(:enquiry_2) do
     Enquiry.create_from_source(
       source: :a_m_direct,
-      source_url: 'amdirect-2.html',
       source_html: File.open('spec/fixtures/amdirect-2.html').read
     )
   end
@@ -20,7 +18,6 @@ feature 'Enquiries - Search', acceptance: true do
   let!(:enquiry_3) do
     Enquiry.create_from_source(
       source: :cars_for_sale,
-      source_url: 'carsforsale-1.html',
       source_html: File.open('spec/fixtures/carsforsale-1.html').read
     )
   end

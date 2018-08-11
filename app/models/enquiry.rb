@@ -14,8 +14,7 @@ class Enquiry < ApplicationRecord
   validates :email, presence: true
   validates :message, presence: true
   validates :source, presence: true
-  # TODO: Source URL is silly. Just validate the listing URL is unique.
-  validates :source_url, presence: true, uniqueness: true
+  validates :listing_url, presence: true, uniqueness: true
   validates :state, presence: true
 
   attr_accessor :source_html
@@ -29,8 +28,8 @@ class Enquiry < ApplicationRecord
     )
   }
 
-  def self.create_from_source(source: nil, source_url: nil, source_html: nil)
-    enquiry = new(source: source, source_url: source_url, source_html: source_html)
+  def self.create_from_source(source: nil, source_html: nil)
+    enquiry = new(source: source, source_html: source_html)
     enquiry.attributes = enquiry.parser.attributes
     enquiry.save
     enquiry

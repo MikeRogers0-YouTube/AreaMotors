@@ -17,9 +17,9 @@ class EnquiriesController < ApplicationController
     # TODO: It would be kind of neat to process this in an ActiveJob.
     # FIXME: Should this be shored up against a failure like a blank/incorrect source_HTML?
     fetched_enquiries_count = [
-      Enquiry.create_from_source(source: :a_m_direct, source_url: '/amdirect-1.html', source_html: Rails.root.join('public/amdirect-1.html').read),
-      Enquiry.create_from_source(source: :a_m_direct, source_url: '/amdirect-2.html', source_html: Rails.root.join('public/amdirect-2.html').read),
-      Enquiry.create_from_source(source: :cars_for_sale, source_url: '/carsforsale-1.html', source_html: Rails.root.join('public/carsforsale-1.html').read)
+      Enquiry.create_from_source(source: :a_m_direct, source_html: Rails.root.join('public/amdirect-1.html').read),
+      Enquiry.create_from_source(source: :a_m_direct, source_html: Rails.root.join('public/amdirect-2.html').read),
+      Enquiry.create_from_source(source: :cars_for_sale, source_html: Rails.root.join('public/carsforsale-1.html').read)
     ].select(&:persisted?).count
 
     redirect_to({ action: :index }, {

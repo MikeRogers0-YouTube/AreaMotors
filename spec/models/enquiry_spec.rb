@@ -2,8 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Enquiry, type: :model do
   describe '#search' do
-    let!(:enquiry_1){ Enquiry.create!(name: 'Sarah-Jane Hardigan', email: 'sjhardigan@mailinator.com', message: 'Example Message', source_url: 'some-file.html') }
-    let!(:enquiry_2){ Enquiry.create!(name: 'John Smith', email: 'johnsmith@mailinator.com', message: 'Example Message', source_url: 'some-file-2.html') }
+    let!(:enquiry_1){ Enquiry.create!(name: 'Sarah-Jane Hardigan', email: 'sjhardigan@mailinator.com', message: 'Example Message', listing_url: 'some-file.html') }
+    let!(:enquiry_2){ Enquiry.create!(name: 'John Smith', email: 'johnsmith@mailinator.com', message: 'Example Message', listing_url: 'some-file-2.html') }
 
     it 'performs a case insentive wildcard match against the name & email field' do
       expect(Enquiry.search('sarah-jane')).to eq([enquiry_1])
@@ -37,13 +37,13 @@ RSpec.describe Enquiry, type: :model do
 
       it 'Will return an unsaved enquiry' do
         expect(Enquiry.count).to eq(1)
-        expect(Enquiry.first.lisiting_url).to eq(enquiry.listing_url)
+        expect(Enquiry.first.listing_url).to eq(enquiry.listing_url)
         expect(enquiry.persisted?).to eq(false)
       end
     end
 
     context 'given an source_html with an invaid email' do
-      let(:source_html) { File.open('spec/fixtures/amdirect-1.html').read }
+      let(:source_html) { File.open('spec/fixtures/amdirect-2-invalid-email.html').read }
 
       it 'Will return an saved Enquiry with the state "invalid"' do
         expect(enquiry.persisted?).to eq(true)

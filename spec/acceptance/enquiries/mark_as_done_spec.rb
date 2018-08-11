@@ -4,7 +4,6 @@ feature 'Enquiries - Mark as done', acceptance: true do
   let!(:enquiry) do
     Enquiry.create_from_source(
       source: :a_m_direct,
-      source_url: 'amdirect-1.html',
       source_html: File.open('spec/fixtures/amdirect-1.html').read
     )
   end
