@@ -2,7 +2,18 @@
 
 The original task requirements can be found in [TASK-SPECIFICATION.md](TASK-SPECIFICATION.md).
 
-## Setting up
+## Tasks
+
+- ✅ Allow employees to click “check for new enquiries”
+- ✅ Parses the sample email enquiries into a standard and structured format
+- ✅ Allows an employee to mark the customer enquiry as “done”
+- ✅ Be able to search for a particular customer enquiry
+- ✅ Mark a customer enquiry as “invalid” if it has an invalid email address
+- Introduce other “states” that a customer enquiry can be in other than “done” and “invalid” so that they can have a better idea of what needs to be done.
+
+## Usage
+
+### Cloning & running the app
 
 Clone the repo and change your directory to the newly cloned repo:
 
@@ -22,13 +33,13 @@ Start the application:
 
 Now navigate you browser to the IP/Port rails is listening (most likely [0.0.0.0:3000](http://0.0.0.0:3000)) on & you should see the Area Motors app.
 
-## Running the tests
+### Running the tests
 
 I used Rspec to write all the test around this task. You can run them with the command:
 
     bundle exec rspec
 
-## System Requirements
+### System Requirements
 
 - Ruby 2.5.1
 - Bundler 1.16.1
