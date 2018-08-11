@@ -47,6 +47,10 @@ gem 'nokogiri'
 # ValidEmail2 - Validates email address via the mail gem, much more reliable then regex.
 gem 'valid_email2'
 
+# Rails Locale Data Repository - A collection of really commit date/time formats for various languages.
+# I'm using it to output date formats in a more friendly style.
+gem 'rails-i18n', '~> 5.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

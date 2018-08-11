@@ -16,4 +16,12 @@ class EnquiryDecorator < Draper::Decorator
   def state
     I18n.t("activerecord.enums.enquiry.state.#{object.state}")
   end
+
+  def created_at
+    h.l object.created_at, format: :long
+  end
+
+  def updated_at
+    h.l object.updated_at, format: :long
+  end
 end
