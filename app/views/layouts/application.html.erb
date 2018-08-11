@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>AreaMotors</title>
+    <title>Area Motors Customer Enquiries</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,6 +11,11 @@
 
   <body>
     <%= render_flashes %>
+    <div class="container mt-5 mb-5 text-center">
+      <%= link_to root_url do %>
+        <h1>Area Motors Customer Enquiries</h1>
+      <% end %>
+    </div>
 
     <div class="container mt-5 mb-4">
       <%= yield %>
