@@ -38,7 +38,11 @@ class Enquiry < ApplicationRecord
   end
 
   def set_attributes_from_parser!
-    self.attributes = parser.attributes
+    begin
+      self.attributes = parser.attributes
+    rescue
+      self.attributes = {}
+    end
   end
 
   private
