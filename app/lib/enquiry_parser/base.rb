@@ -4,10 +4,6 @@ class EnquiryParser::Base
     @content = content
   end
 
-  def valid?
-    false
-  end
-
   def attributes
     {
       'name': name,
