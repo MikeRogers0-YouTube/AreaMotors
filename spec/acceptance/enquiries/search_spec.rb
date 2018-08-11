@@ -26,40 +26,40 @@ feature 'Enquiries - Search', acceptance: true do
   end
 
   before do
-    enquiry_1.email = "a-very-unique-email@example.com"
-    enquiry_1.name = "Mrs Unique Name"
+    enquiry_1.email = 'a-very-unique-email@example.com'
+    enquiry_1.name = 'Mrs Unique Name'
     enquiry_1.save
   end
 
-  scenario 'User can search for an enquiry by their email' do
+  scenario 'User can search for an enquiry customer by their email' do
     expect(Enquiry.count).to eq(3)
 
     visit enquiries_path
 
-    expect(page).to have_selector(".customer-enquiry", count: 3)
+    expect(page).to have_selector('table.enquiries tbody tr', count: 3)
 
-    within '.search-form' do
+    within '.enquiry_search' do
       fill_in :query, with: enquiry_1.email.split('@').first
-      submit
+      click_on 'Search'
     end
 
-    expect(page).to have_selector(".customer-enquiry", count: 1)
-    expect(find(:css, '.customer-enquiry .customer-enquiry__email')).to have_text(enquiry_1.email)
+    expect(page).to have_selector('table.enquiries tbody tr', count: 1)
+    expect(find(:css, 'table.enquiries')).to have_text(enquiry_1.email)
   end
 
-  scenario 'User can search for an enquiry by their name' do
+  scenario 'User can search for an enquiry customer by their name' do
     expect(Enquiry.count).to eq(3)
 
     visit enquiries_path
 
-    expect(page).to have_selector(".customer-enquiry", count: 3)
+    expect(page).to have_selector('table.enquiries tbody tr', count: 3)
 
-    within '.search-form' do
+    within '.enquiry_search' do
       fill_in :query, with: enquiry_1.name
-      submit
+      click_on 'Search'
     end
 
-    expect(page).to have_selector(".customer-enquiry", count: 1)
-    expect(find(:css, '.customer-enquiry .customer-enquiry__name')).to have_text(enquiry_1.name)
+    expect(page).to have_selector('table.enquiries tbody tr', count: 1)
+    expect(find(:css, 'table.enquiries')).to have_text(enquiry_1.name)
   end
 end
