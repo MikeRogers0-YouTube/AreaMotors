@@ -44,6 +44,9 @@ gem 'easy_table'
 # Nokogiri - For parsing the HTML messages
 gem 'nokogiri'
 
+# ValidEmail2 - Validates email address via the mail gem, much more reliable then regex.
+gem 'valid_email2'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

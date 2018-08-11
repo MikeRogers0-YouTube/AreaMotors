@@ -41,6 +41,7 @@ class Enquiry < ApplicationRecord
   end
 
   def verify_email_quality!
-    # TODO
+    return if ValidEmail2::Address.new(email).valid?
+    self.state = :invalid
   end
 end
