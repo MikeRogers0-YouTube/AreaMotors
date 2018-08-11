@@ -1,10 +1,19 @@
 // Copied from node_modules/bootstrap/scss/bootstrap.scss then removed the parts we aren't using.
 
+@import "bootstrap/area_motors_variables";
+
 @import "bootstrap/scss/functions";
 @import "bootstrap/scss/variables";
 @import "bootstrap/scss/mixins";
 
-@import "bootstrap/area_motors_variables";
+// Override the theme colours so our theme is only 5 colours.
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "danger":     $danger,
+  "notice":     $info
+);
 
 @import "bootstrap/scss/root";
 @import "bootstrap/scss/reboot";
