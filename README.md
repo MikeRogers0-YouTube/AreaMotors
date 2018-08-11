@@ -19,6 +19,10 @@ Clone the repo and change your directory to the newly cloned repo:
 
     git clone git@github.com:MikeRogers0/AreaMotors.git && cd AreaMotors
 
+Use [Bundler](https://bundler.io/) to install the ruby gems:
+
+    bundle
+
 Use [Yarn](https://yarnpkg.com/en/) to install NPM managed assets:
 
     yarn
