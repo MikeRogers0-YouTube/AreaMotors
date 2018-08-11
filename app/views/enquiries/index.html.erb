@@ -3,7 +3,7 @@
     <%= render 'search' %>
   </div>
   <div class="col-12 col-md-4 actions">
-    <%= link_to 'Check for new enquiries', [:fetch_new, :enquiries], method: :post, class: 'btn btn-primary float-right' %>
+    <%= link_to 'Check for new enquiries', [:fetch_new, :enquiries], method: :post, class: 'btn btn-success float-right' %>
   </div>
 </div>
 
@@ -12,7 +12,6 @@
     <% t.column field, Enquiry.human_attribute_name(field) %>
   <% end %>
   <% t.column :actions, 'Actions' do |enquiry| %>
-    <%= link_to 'Show', enquiry %>
-    <%= link_to 'Edit', [:edit, enquiry] %>
+    <%= link_to 'View', enquiry %>
   <% end %>
 <% end %>
