@@ -38,6 +38,9 @@ gem 'draper'
 # Simple Form - The standard Rails forms don't encourage i18n as much.
 gem 'simple_form'
 
+# Easy Table - Like Simple Form, but for outputting tables which encourage i18n.
+gem 'easy_table'
+
 # Nokogiri - For parsing the HTML messages
 gem 'nokogiri'
 
