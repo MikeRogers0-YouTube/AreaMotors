@@ -32,11 +32,16 @@ class Enquiry < ApplicationRecord
 
   def self.create_from_source(source: nil, source_html: nil)
     enquiry = new(source: source, source_html: source_html)
-    enquiry.attributes = enquiry.parser.attributes
+    enquiry.set_attributes_from_parser!
     enquiry.save
     enquiry
   end
 
+  def set_attributes_from_parser!
+    self.attributes = parser.attributes
+  end
+
+  private
   def parser
     @parser ||= ("EnquiryParser::#{source.to_s.camelize}").constantize.new(source_html)
   end

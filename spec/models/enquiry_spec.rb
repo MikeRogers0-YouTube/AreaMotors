@@ -66,7 +66,7 @@ RSpec.describe Enquiry, type: :model do
 
     context 'a valid email' do
       it 'Keeps the enquiry.state as "open"' do
-        expect{ enquiry.verify_email_quality! }.to_not change{ enquiry.state }
+        expect{ enquiry.send(:verify_email_quality!) }.to_not change{ enquiry.state }
       end
     end
 
@@ -74,7 +74,7 @@ RSpec.describe Enquiry, type: :model do
       let(:enquiry){ Enquiry.new(email: 'invalid-email') }
 
       it 'Changes the enquiry.state to "invalid"' do
-        expect{ enquiry.verify_email_quality! }.to change{ enquiry.state }.from('open').to('invalid')
+        expect{ enquiry.send(:verify_email_quality!) }.to change{ enquiry.state }.from('open').to('invalid')
       end
     end
   end
