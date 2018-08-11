@@ -4,7 +4,7 @@
 
   <div class="form-inputs">
     <%= f.input :state, collection: f.object.class.options_for_state, include_blank: false %>
-    <%= f.input :custom_state %>
+    <%= f.input :custom_state, required: true %>
     <%= f.input :notes %>
   </div>
 

@@ -12,4 +12,6 @@
 //
 //= require rails-ujs
 //= require turbolinks
+//= require jquery/dist/jquery.min
+//= require show-when-this/show-when-this.min.js
 //= require_tree .

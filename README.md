@@ -9,7 +9,7 @@ The original task requirements can be found in [TASK-SPECIFICATION.md](TASK-SPEC
 - ✅ Allows an employee to mark the customer enquiry as “done”
 - ✅ Be able to search for a particular customer enquiry
 - ✅ Mark a customer enquiry as “invalid” if it has an invalid email address
-- Introduce other “states” that a customer enquiry can be in other than “done” and “invalid” so that they can have a better idea of what needs to be done.
+- ✅ Introduce other “states” that a customer enquiry can be in other than “done” and “invalid” so that they can have a better idea of what needs to be done.
 
 ## Usage
 
