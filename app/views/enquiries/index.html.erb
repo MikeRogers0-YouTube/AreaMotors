@@ -10,7 +10,7 @@
 <%= render 'search' %>
 
 <%= table_for(collection, class: 'table enquiries') do |t| %>
-  <% [:name, :email, :message, :listing_url, :state].each do |field| %>
+  <% [:name, :email, :message, :source, :listing_url, :state].each do |field| %>
     <% t.column field, Enquiry.human_attribute_name(field) %>
   <% end %>
   <% t.column :actions, 'Actions' do |enquiry| %>

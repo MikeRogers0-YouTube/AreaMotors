@@ -1,6 +1,4 @@
 class EnquiriesController < ApplicationController
-  before_action :set_enquiry, only: [:show, :state_done]
-
   # GET /enquiries
   def index; end
 
@@ -9,10 +7,9 @@ class EnquiriesController < ApplicationController
 
   # PATCH /enquiries/1/state_done
   def state_done
-    # TODO: Instead of @enquiry, use a more generic term like 'resource'
-    @enquiry.state_done!
+    resource.state_done!
 
-    redirect_to url_for(@enquiry), notice: t('.notice')
+    redirect_to url_for(resource), notice: t('.notice')
   end
 
   # POST /enquiries/fetch_new
@@ -31,17 +28,17 @@ class EnquiriesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_enquiry
-      @enquiry = Enquiry.find(params[:id])
-    end
+  helper_method :resource
+  def resource
+    @resource = Enquiry.find(params[:id]).decorate
+  end
 
-    helper_method :collection
-    def collection
-      if params[:query].present?
-        Enquiry.search(params[:query]).decorate
-      else
-        Enquiry.all.decorate
-      end
+  helper_method :collection
+  def collection
+    if params[:query].present?
+      Enquiry.search(params[:query]).decorate
+    else
+      Enquiry.all.decorate
     end
+  end
 end

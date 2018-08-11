@@ -1,0 +1,18 @@
+en:
+  activerecord:
+    attributes:
+      enquiry:
+        id: 'ID'
+        name: 'Name'
+        email: 'Email Address'
+        message: 'Message'
+        source: 'Source'
+        listing_make: 'Make'
+        listing_model: 'Model'
+        listing_year: 'Year'
+        listing_colour: 'Colour'
+        listing_url: 'URL'
+        listing_reference: 'Reference'
+        state: 'State'
+        created_at: 'Created At'
+        updated_at: 'Updated At'

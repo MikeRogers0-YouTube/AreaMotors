@@ -1,61 +1,37 @@
 <header class="row mb-5">
   <div class="col-12">
-    <h1>Enquiry<small> <%= @enquiry.email %></small></h1>
+    <h1>Enquiry<small> <%= resource.email %></small></h1>
   </div>
 </header>
 
-<p>
-  <strong>Name:</strong>
-  <%= @enquiry.name %>
-</p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @enquiry.email %>
-</p>
+<h2>Customer Details</h2>
+<dl class="row">
+  <% %i[name email message].each do |field| %>
+    <dt class="col-sm-3"><%= Enquiry.human_attribute_name(field) %></dt>
+    <dd class="col-sm-9"><%= resource.send(field) %></dd>
+  <% end %>
+</dl>
 
-<p>
-  <strong>Message:</strong>
-  <%= @enquiry.message %>
-</p>
+<h2>Listing Details</h2>
+<dl class="row">
+  <% %i[source listing_make listing_model listing_year listing_colour listing_url listing_reference].select do |field|
+    resource.send("#{field}?")
+  end.each do |field| %>
+    <dt class="col-sm-3"><%= Enquiry.human_attribute_name(field) %></dt>
+    <dd class="col-sm-9"><%= resource.send(field) %></dd>
+  <% end %>
+</dl>
 
-<p>
-  <strong>Source:</strong>
-  <%= @enquiry.source %>
-</p>
-
-<p>
-  <strong>Listing make:</strong>
-  <%= @enquiry.listing_make %>
-</p>
-
-<p>
-  <strong>Listing model:</strong>
-  <%= @enquiry.listing_model %>
-</p>
-
-<p>
-  <strong>Listing year:</strong>
-  <%= @enquiry.listing_year %>
-</p>
-
-<p>
-  <strong>Listing colour:</strong>
-  <%= @enquiry.listing_colour %>
-</p>
-
-<p>
-  <strong>Listing url:</strong>
-  <%= @enquiry.listing_url %>
-</p>
-
-<p>
-  <strong>Listing reference:</strong>
-  <%= @enquiry.listing_reference %>
-</p>
-
+<h2>Enquiry Details</h2>
+<dl class="row">
+  <% %i[created_at updated_at state].each do |field| %>
+    <dt class="col-sm-3"><%= Enquiry.human_attribute_name(field) %></dt>
+    <dd class="col-sm-9"><%= resource.send(field) %></dd>
+  <% end %>
+</dl>
 
 <div class="actions">
-  <%= link_to 'Back', enquiries_path %>
-  <%= link_to 'Mark as done', state_done_enquiry_path(@enquiry), method: :patch, class: 'btn btn-success' unless @enquiry.state_done? %>
+  <%= link_to 'Back', enquiries_path, class: 'btn' %>
+  <%= link_to 'Mark as done', state_done_enquiry_path(resource), method: :patch, class: 'btn btn-success' unless resource.state_done? %>
 </div>
