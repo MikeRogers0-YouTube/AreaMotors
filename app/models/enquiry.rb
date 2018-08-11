@@ -17,6 +17,8 @@ class Enquiry < ApplicationRecord
   validates :listing_url, presence: true, uniqueness: true
   validates :state, presence: true
 
+  before_create :verify_email_quality!
+
   attr_accessor :source_html
 
   # TODO: A scope for ordering by newest_first?
