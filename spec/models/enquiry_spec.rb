@@ -1,6 +1,24 @@
 require 'rails_helper'
 
 RSpec.describe Enquiry, type: :model do
+  describe 'Validations' do
+    describe :custom_state do
+      let(:enquiry){ Enquiry.new(state: :open) }
+      it 'Must be present when state is custom' do
+        enquiry.valid?
+        expect(enquiry.errors.keys).to_not include(:custom_state)
+
+        enquiry.state = :custom
+        enquiry.valid?
+        expect(enquiry.errors.keys).to include(:custom_state)
+
+        enquiry.custom_state = 'Special State'
+        enquiry.valid?
+        expect(enquiry.errors.keys).to_not include(:custom_state)
+      end
+    end
+  end
+
   describe '#search' do
     let!(:enquiry_1){ Enquiry.create!(name: 'Sarah-Jane Hardigan', email: 'sjhardigan@mailinator.com', message: 'Example Message', listing_url: 'some-file.html') }
     let!(:enquiry_2){ Enquiry.create!(name: 'John Smith', email: 'johnsmith@mailinator.com', message: 'Example Message', listing_url: 'some-file-2.html') }

@@ -14,7 +14,11 @@ class EnquiryDecorator < Draper::Decorator
   end
 
   def state
-    I18n.t("activerecord.enums.enquiry.states.#{object.state}")
+    if state_custom?
+      custom_state
+    else
+      I18n.t("activerecord.enums.enquiry.states.#{object.state}")
+    end
   end
 
   def created_at

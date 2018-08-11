@@ -17,6 +17,7 @@ class Enquiry < ApplicationRecord
   validates :source, presence: true
   validates :listing_url, presence: true, uniqueness: true
   validates :state, presence: true
+  validates :custom_state, presence: true, if: :state_custom?
 
   before_create :verify_email_quality!
 
