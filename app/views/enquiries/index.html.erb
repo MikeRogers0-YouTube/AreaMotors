@@ -3,17 +3,18 @@
     <h2>Enquiries</h2>
   </div>
   <div class="col-12 col-md-6 actions">
-    <%= link_to 'Check for new enquiries', url_for(action: :fetch_new), method: :post, class: 'btn btn-primary float-right' %>
+    <%= link_to 'Check for new enquiries', [:fetch_new, :enquiries], method: :post, class: 'btn btn-primary float-right' %>
   </div>
 </header>
 
 <%= render 'search' %>
 
 <%= table_for(collection, class: 'table enquiries') do |t| %>
-  <% %i[name email message source listing_url state created_at].each do |field| %>
+  <% %i[name email message source state created_at].each do |field| %>
     <% t.column field, Enquiry.human_attribute_name(field) %>
   <% end %>
   <% t.column :actions, 'Actions' do |enquiry| %>
     <%= link_to 'Show', enquiry %>
+    <%= link_to 'Edit', [:edit, enquiry] %>
   <% end %>
 <% end %>

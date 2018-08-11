@@ -28,4 +28,8 @@ class EnquiryDecorator < Draper::Decorator
   def updated_at
     h.l object.updated_at, format: :long
   end
+
+  def notes
+    h.sanitize((object.notes).strip.gsub(/(?:\n\r?|\r\n?)/, '<br>'), tags: %w[br])
+  end
 end
