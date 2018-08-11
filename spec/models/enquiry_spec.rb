@@ -18,7 +18,6 @@ RSpec.describe Enquiry, type: :model do
 
   describe '#create_from_source' do
     let(:enquiry) { Enquiry.create_from_source( source: :a_m_direct, source_html: source_html) }
-    pending
 
     context 'given an blank source_html' do
       let(:source_html) { '' }

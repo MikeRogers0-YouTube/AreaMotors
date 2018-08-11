@@ -16,3 +16,13 @@ en:
         state: 'State'
         created_at: 'Created At'
         updated_at: 'Updated At'
+
+    enums:
+      enquiry:
+        source:
+          a_m_direct: 'AMDirect'
+          cars_for_sale: 'CarsForSale'
+        state:
+          open: 'Open'
+          done: 'Done'
+          invalid: 'Invalid'
