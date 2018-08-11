@@ -10,11 +10,11 @@ class EnquiryDecorator < Draper::Decorator
   end
 
   def source
-    I18n.t("activerecord.enums.enquiry.source.#{object.source}")
+    I18n.t("activerecord.enums.enquiry.sources.#{object.source}")
   end
 
   def state
-    I18n.t("activerecord.enums.enquiry.state.#{object.state}")
+    I18n.t("activerecord.enums.enquiry.states.#{object.state}")
   end
 
   def created_at

@@ -34,8 +34,6 @@ feature 'Enquiries - Custom states', acceptance: true do
     expect(enquiry.notes).to eq('Customer needs a callback in a week.')
 
     expect(current_path).to eq(enquiry_path(enquiry))
-    within '.actions' do
-      expect(page).to have_content 'State Follow up'
-    end
+    expect(page).to have_content 'State Follow up'
   end
 end

@@ -4,7 +4,8 @@
   </div>
 
   <div class="col-12 col-md-6 actions text-right">
-    <%= link_to 'Mark as done', state_done_enquiry_path(resource), method: :patch, class: 'btn btn-success ml-5' unless resource.state_done? %>
+    <%= link_to 'Mark as done', state_done_enquiry_path(resource), method: :patch, class: 'btn btn-success' unless resource.state_done? %>
+    <%= link_to 'Edit', edit_enquiry_path(resource), class: 'btn btn-secondary ml-3' %>
   </div>
 </header>
 
@@ -29,7 +30,7 @@
 
 <h3>Enquiry Details</h3>
 <dl class="row">
-  <% %i[created_at updated_at state].each do |field| %>
+  <% %i[created_at updated_at state notes].each do |field| %>
     <dt class="col-sm-3"><%= Enquiry.human_attribute_name(field) %></dt>
     <dd class="col-sm-9"><%= resource.send(field) %></dd>
   <% end %>

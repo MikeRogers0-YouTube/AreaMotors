@@ -1,0 +1,11 @@
+<header class="row mb-5">
+  <div class="col-12 col-md-6">
+    <h2>Enquiry <small><%= resource.email %></small></h2>
+  </div>
+
+  <div class="col-12 col-md-6 actions text-right">
+    <%= link_to 'Back', enquiry_path(resource), class: 'btn btn-secondary' %>
+  </div>
+</header>
+
+<%= render 'form' %>

@@ -5,6 +5,16 @@ class EnquiriesController < ApplicationController
   # GET /enquiries/1
   def show; end
 
+  # GET /enquiries/1/edit
+  def edit; end
+
+  # PATCH /enquiries/1
+  def update
+    return render :edit unless resource.update_attributes(resource_params)
+
+    redirect_to url_for(resource), notice: t('.notice')
+  end
+
   # PATCH /enquiries/1/state_done
   def state_done
     resource.state_done!
@@ -29,12 +39,16 @@ class EnquiriesController < ApplicationController
   private
   helper_method :resource
   def resource
-    @resource = Enquiry.find(params[:id]).decorate
+    @resource ||= Enquiry.find(params[:id]).decorate
+  end
+
+  def resource_params
+    params.require(:enquiry).permit(:state, :custom_state, :notes)
   end
 
   helper_method :collection
   def collection
-    if params[:query].present?
+    @collection ||= if params[:query].present?
       Enquiry.search(params[:query]).newest_first.decorate
     else
       Enquiry.all.newest_first.decorate

@@ -19,10 +19,11 @@ en:
 
     enums:
       enquiry:
-        source:
+        sources:
           a_m_direct: 'AMDirect'
           cars_for_sale: 'CarsForSale'
-        state:
+        states:
           open: 'Open'
           done: 'Done'
           invalid: 'Invalid'
+          custom: 'Custom'

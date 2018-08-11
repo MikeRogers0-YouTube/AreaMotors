@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :enquiries, only: [:index, :show] do
+  resources :enquiries, only: [:index, :show, :edit, :update] do
     collection do
       post :fetch_new
     end

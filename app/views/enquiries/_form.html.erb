@@ -1,0 +1,14 @@
+<%= simple_form_for(resource.object) do |f| %>
+  <%= f.error_notification %>
+  <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+
+  <div class="form-inputs">
+    <%= f.input :state, collection: f.object.class.options_for_state, include_blank: false %>
+    <%= f.input :custom_state %>
+    <%= f.input :notes %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit class: 'btn btn-success' %>
+  </div>
+<% end %>

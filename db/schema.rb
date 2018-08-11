@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_08_11_152447) do
+ActiveRecord::Schema.define(version: 2018_08_11_194507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,8 @@ ActiveRecord::Schema.define(version: 2018_08_11_152447) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "state", default: 10
+    t.string "custom_state"
+    t.text "notes"
   end
 
 end

@@ -8,6 +8,7 @@ class Enquiry < ApplicationRecord
     open: 10, 
     done: 20, 
     invalid: 30, 
+    custom: 40, 
   }, _prefix: :state
 
   validates :name, presence: true
@@ -35,6 +36,12 @@ class Enquiry < ApplicationRecord
     enquiry.set_attributes_from_parser!
     enquiry.save
     enquiry
+  end
+
+  def self.options_for_state
+    states.keys.collect do |state|
+      [I18n.t("activerecord.enums.enquiry.states.#{state}"), state]
+    end
   end
 
   def set_attributes_from_parser!

@@ -4,3 +4,5 @@ en:
       notice: "Found %{fetched_enquiries_count} new enquiries"
     state_done:
       notice: "Enquiry marked as done"
+    update:
+      notice: "Enquiry updated"
