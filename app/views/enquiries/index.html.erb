@@ -1,13 +1,11 @@
-<header class="row mb-5">
-  <div class="col-12 col-md-6">
-    <h2>Enquiries</h2>
+<div class="row">
+  <div class="col-12 col-md-8">
+    <%= render 'search' %>
   </div>
-  <div class="col-12 col-md-6 actions">
+  <div class="col-12 col-md-4 actions">
     <%= link_to 'Check for new enquiries', [:fetch_new, :enquiries], method: :post, class: 'btn btn-primary float-right' %>
   </div>
-</header>
-
-<%= render 'search' %>
+</div>
 
 <%= table_for(collection, class: 'table enquiries') do |t| %>
   <% %i[name email message source state created_at].each do |field| %>
