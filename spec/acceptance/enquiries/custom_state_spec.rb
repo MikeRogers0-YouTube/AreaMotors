@@ -17,6 +17,13 @@ feature 'Enquiries - Custom states', acceptance: true do
       click_on 'Edit'
     end
 
+    within '.edit_enquiry' do
+      select 'Custom', from: :enquiry_state
+      fill_in :enquiry_custom_state, with: 'Follow up'
+      fill_in :enquiry_notes, with: 'Customer needs a callback in a week.'
+      click_on 'Update Enquiry'
+    end
+
     within '.alerts' do
       expect(page).to have_content 'Enquiry updated'
     end
