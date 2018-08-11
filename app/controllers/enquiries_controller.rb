@@ -14,8 +14,7 @@ class EnquiriesController < ApplicationController
 
   # POST /enquiries/fetch_new
   def fetch_new
-    # TODO: It would be kind of neat to process this in an ActiveJob.
-    # FIXME: Should this be shored up against a failure like a blank/incorrect source_HTML?
+    # NOTE: It would be kind of neat to process this in an ActiveJob for each import, but felt like overkill for this task.
     fetched_enquiries_count = [
       Enquiry.create_from_source(source: :a_m_direct, source_html: Rails.root.join('public/amdirect-1.html').read),
       Enquiry.create_from_source(source: :a_m_direct, source_html: Rails.root.join('public/amdirect-2.html').read),
