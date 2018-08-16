@@ -1,4 +1,6 @@
 class Enquiry < ApplicationRecord
+  belongs_to :customer
+
   enum source: { 
     a_m_direct: 10, 
     cars_for_sale: 20, 

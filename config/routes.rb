@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  resources :customers, only: [:index, :show]
+
   resources :enquiries, only: [:index, :show, :edit, :update] do
     collection do
       post :fetch_new
