@@ -45,20 +45,6 @@ RSpec.describe Enquiry, type: :model do
       end
     end
 
-    context 'given an source_html with a duplicated listing_url' do
-      let(:source_html) { File.open('spec/fixtures/amdirect-1.html').read }
-
-      before do
-        Enquiry.create_from_source( source: :a_m_direct, source_html: source_html)
-      end
-
-      it 'Will return an unsaved enquiry' do
-        expect(Enquiry.count).to eq(1)
-        expect(Enquiry.first.listing_url).to eq(enquiry.listing_url)
-        expect(enquiry.persisted?).to eq(false)
-      end
-    end
-
     context 'given an source_html with an invaid email' do
       let(:source_html) { File.open('spec/fixtures/amdirect-2-invalid-email.html').read }
 
