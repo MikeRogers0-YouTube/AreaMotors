@@ -6,3 +6,6 @@ en:
       notice: "Enquiry marked as done"
     update:
       notice: "Enquiry updated"
+  customer_notes:
+    create:
+      notice: "Note created"

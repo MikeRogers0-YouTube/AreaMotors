@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :customers, only: [:index, :show]
+  resources :customers, only: [:index, :show] do
+    member do
+      resources :notes, controller: :customer_notes, only: [:create]
+    end
+  end
 
   resources :enquiries, only: [:index, :show, :edit, :update] do
     collection do

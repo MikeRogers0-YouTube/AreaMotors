@@ -12,3 +12,12 @@
     <dd class="col-sm-9"><%= resource.send(field) %></dd>
   <% end %>
 </dl>
+
+<h3>Notes</h3>
+
+<% resource.customer_notes.each do |customer_note| %>
+  <%= customer_note %>
+  <hr />
+<% end %>
+
+<%= render 'customer_notes/form', customer: resource %>
