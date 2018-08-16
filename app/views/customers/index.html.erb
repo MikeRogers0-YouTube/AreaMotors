@@ -1,2 +1,8 @@
-<h1>Customers#index</h1>
-<p>Find me in app/views/customers/index.html.erb</p>
+<%= table_for(collection, class: 'table customers') do |t| %>
+  <% %i[name email created_at].each do |field| %>
+    <% t.column field, Customer.human_attribute_name(field) %>
+  <% end %>
+  <% t.column :actions, 'Actions' do |customer| %>
+    <%= link_to 'View', customer %>
+  <% end %>
+<% end %>

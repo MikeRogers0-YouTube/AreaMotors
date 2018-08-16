@@ -1,2 +1,14 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<header class="row mb-5">
+  <div class="col-12 col-md-6">
+    <h2>Customer <small><%= resource.name %></small></h2>
+  </div>
+</header>
+
+
+<h3>Customer Details</h3>
+<dl class="row">
+  <% %i[name email].each do |field| %>
+    <dt class="col-sm-3"><%= Customer.human_attribute_name(field) %></dt>
+    <dd class="col-sm-9"><%= resource.send(field) %></dd>
+  <% end %>
+</dl>
