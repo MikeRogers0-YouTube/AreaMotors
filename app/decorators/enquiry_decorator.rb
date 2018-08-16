@@ -1,6 +1,14 @@
 class EnquiryDecorator < Draper::Decorator
   delegate_all
 
+  def name
+    object.customer.name
+  end
+
+  def email
+    object.customer.email
+  end
+
   def message
     h.sanitize(object.message, tags: %w(br))
   end

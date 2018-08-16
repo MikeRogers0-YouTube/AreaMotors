@@ -21,9 +21,10 @@ class Enquiry < ApplicationRecord
   validates :state, presence: true
   validates :custom_state, presence: true, if: :state_custom?
 
+  before_validation :assign_customer!
   before_create :verify_email_quality!
 
-  attr_accessor :source_html
+  attr_accessor :source_html, :name, :email
 
   scope :newest_first, ->{ order(created_at: :desc) }
   scope :search, ->(query){
@@ -37,7 +38,7 @@ class Enquiry < ApplicationRecord
   def self.create_from_source(source: nil, source_html: nil)
     enquiry = new(source: source, source_html: source_html)
     enquiry.set_attributes_from_parser!
-    enquiry.save
+    enquiry.save!
     enquiry
   end
 
@@ -63,5 +64,9 @@ class Enquiry < ApplicationRecord
   def verify_email_quality!
     return if ValidEmail2::Address.new(email).valid?
     self.state = :invalid
+  end
+
+  def assign_customer!
+    self.customer = Customer.find_or_initialize_by(email: email, name: name)
   end
 end
